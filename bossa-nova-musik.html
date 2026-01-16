@@ -6,7 +6,77 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/svg+xml" href="media/paulo-bittencourt.svg">
 	<link rel="stylesheet" type="text/css" href="styles.css">
-	<meta property="og:image" content="media/paulo-bittencourt-bossa-nova-musik.jpg">
+	<meta property="og:image" content="media/paulo-bittencourt-musica-bossa-nova.jpg">
+	<style>		.player
+		{
+			border: solid 1px #bbb;
+			border-radius: 4px;
+			color: #000;
+			margin-top: 31px;
+			padding: 3px 10px 10px 10px;
+			text-align: center;
+		}
+
+		audio
+		{
+			margin-bottom: 20px;
+			width: 100%;
+		}
+
+		.controls
+		{
+			border-left: solid 1px #999;
+			border-top: solid 1px #999;
+			border-right: solid 1px #999;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			margin-top: 10px;
+		}
+
+		.controls button
+		{
+			background: #fff;
+			border: none;
+			cursor: pointer;
+			padding: 7px 0px 6px 0px;
+			font-size: 0.8rem;
+		}
+
+		.progress-container
+		{
+			border: solid 1px #999;
+			cursor: pointer;
+			height: 10px;
+		}
+
+		.progress
+		{
+			background: #025eee;
+			height: 10px;
+			width: 0%;
+		}
+
+		.song-list
+		{
+			border-left: solid 1px #999;
+			border-right: solid 1px #999;
+			border-bottom: solid 1px #999;
+			font-size: 1rem;
+			font-weight: normal;
+			max-height: 130px;
+			overflow-y: auto;
+			text-align: left;
+		}
+
+		.song-list div
+		{
+			border-bottom: solid 1px #ddd;
+			cursor: pointer;
+			padding: 3px 0px 0px 6px;
+		}
+
+		.song-list .active { background: #f5f5f5; }
+</style>
 </head>
 <body>
 <a class="navigation-button-top-left" href="/">&#9776;&#xfe0e;</a>
@@ -39,8 +109,65 @@
 			Ich habe Operngesang studiert (im berühmten Konservatorium der Stadt Wien, das heute einen anderen Namen hat), aber gebe zu: meine Lieblingsmusik ist die Bossa Nova. Dieser Musikstil gefällt mir so sehr, dass ich sogar mir die Mühe gemacht habe, Gitarre zu lernen, nur um Bossa Nova spielen, mich selbst begleiten zu können.<br>
 			<span class="indent">Falls Sie es nicht wissen: Bossa Nova bedeutet in etwa Neue Coolness, Neue Kultiviertheit, und ist Ende der 1950er Jahre in Brasilien entstanden, genauer gesagt in Rio de Janeiro, wo junge Musiker (u. a. Antônio Carlos Jobim, João Gilberto, Baden Powell und Vinícius de Moraes) den damaligen Musikgeschmack altmodisch gefunden und sich für Jazz interessiert haben. Einfach gesagt ist Bossa Nova eine Mischung aus Samba und Jazz, ein cooler, intimer Samba, der nicht zum Tanzen, sondern zum Zuhören ist.</span>
 		</p>
-		<iframe style="margin-top: 16px; border: 0; width: 100%; height: 120px" src="https://bandcamp.com/EmbeddedPlayer/album=1218713921/size=large/bgcol=ffffff/linkcol=025eee/tracklist=false/artwork=none/transparent=true/" seamless><a href="https://bossa-nova.bandcamp.com/album/bossa-nova">Bossa Nova by Paulo Bittencourt</a></iframe>
-		<div style="margin-top: 32px; margin-bottom: 30px; text-align: center">
+		<div class="player roboto">
+			<h2 style="margin-top: 9px; font-size: 1.2rem; font-weight: normal">
+				Paulo Bittencourts Musik
+			</h2>
+			<audio id="audio" src="https://ateismo-bittencourt.github.io/media/music/01-aquarela-bossa-nova-paulo-bittencourt.mp3">
+			</audio>
+			<div class="controls">
+				<button style="border-right: solid 1px #999" onclick="prev()">Vorheriges</button><button style="border-right: solid 1px #999; font-size: 1rem" onclick="playPause()" id="playBtn">Spielen</button><button onclick="next()">Nächstes</button>
+			</div>
+			<div class="progress-container" onclick="setProgress(event)">
+				<div class="progress" id="progress">
+				</div>
+			</div>
+			<div class="song-list" id="songList">
+				<div class="active" onclick="playSong(0)">
+					Aquarela
+				</div>
+				<div onclick="playSong(1)">
+					Bonita
+				</div>
+				<div onclick="playSong(2)">
+					Caminhos Cruzados
+				</div>
+				<div onclick="playSong(3)">
+					Começou de Brincadeira
+				</div>
+				<div onclick="playSong(4)">
+					Copacabana
+				</div>
+				<div onclick="playSong(5)">
+					Deixa
+				</div>
+				<div onclick="playSong(6)">
+					Desencontro
+				</div>
+				<div onclick="playSong(7)">
+					Melodia Sentimental
+				</div>
+				<div onclick="playSong(8)">
+					Mocinho Bonito
+				</div>
+				<div onclick="playSong(9)">
+					O Que Será
+				</div>
+				<div onclick="playSong(10)">
+					Sonho de Um Carnaval
+				</div>
+				<div onclick="playSong(11)">
+					Tamanco no Samba
+				</div>
+				<div onclick="playSong(12)">
+					Tarde em Itapuã
+				</div>
+				<div style="border-bottom: none" onclick="playSong(13)">
+					Tem Dó
+				</div>
+			</div>
+		</div>
+		<div style="margin-top: 39px; margin-bottom: 33px; text-align: center">
 			<a href="https://www.paypal.com/donate?hosted_button_id=W8GZGFGKLCA9S" target="_blank"><span class="green-button">Gefällt Ihnen? Zahlen<br>
 			Sie mir einen Kaffee</span></a>
 		</div>
@@ -64,5 +191,71 @@
 		</div>
 	</div>
 </div>
+<script>
+	const audio = document.getElementById('audio');
+	const playBtn = document.getElementById('playBtn');
+	const progress = document.getElementById('progress');
+	const volumeSlider = document.getElementById('volume');
+	const songList = document.getElementById('songList').children;
+	const songs = [
+	  'https://ateismo-bittencourt.github.io/media/music/01-aquarela-bossa-nova-paulo-bittencourt.mp3',
+	  'https://ateismo-bittencourt.github.io/media/music/02-bonita-bossa-nova-paulo-bittencourt.mp3',
+	  'https://ateismo-bittencourt.github.io/media/music/03-caminhos-cruzados-bossa-nova-paulo-bittencourt.mp3',
+	  'https://ateismo-bittencourt.github.io/media/music/04-comecou-de-brincadeira-bossa-nova-paulo-bittencourt.mp3',
+	  'https://ateismo-bittencourt.github.io/media/music/05-copacabana-bossa-nova-paulo-bittencourt.mp3',
+	  'https://ateismo-bittencourt.github.io/media/music/06-deixa-bossa-nova-paulo-bittencourt.mp3',
+	  'https://ateismo-bittencourt.github.io/media/music/07-desencontro-bossa-nova-paulo-bittencourt.mp3',
+	  'https://ateismo-bittencourt.github.io/media/music/08-melodia-sentimental-bossa-nova-paulo-bittencourt.mp3',
+	  'https://ateismo-bittencourt.github.io/media/music/09-mocinho-bonito-bossa-nova-paulo-bittencourt.mp3',
+	  'https://ateismo-bittencourt.github.io/media/music/10-o-que-sera-bossa-nova-paulo-bittencourt.mp3',
+	  'https://ateismo-bittencourt.github.io/media/music/11-sonho-de-um-carnaval-bossa-nova-paulo-bittencourt.mp3',
+	  'https://ateismo-bittencourt.github.io/media/music/12-tamanco-no-samba-bossa-nova-paulo-bittencourt.mp3',
+	  'https://ateismo-bittencourt.github.io/media/music/13-tarde-em-itapua-bossa-nova-paulo-bittencourt.mp3',
+	  'https://ateismo-bittencourt.github.io/media/music/14-tem-do-bossa-nova-paulo-bittencourt.mp3'
+	];
+	let songIndex = 0;
+	function playPause(){
+	  if(audio.paused){ audio.play(); playBtn.innerText='Pause'; }
+	  else{ audio.pause(); playBtn.innerText='Spielen'; }
+	}
+	function next(){
+	  songIndex = (songIndex + 1) % songs.length;
+	  loadSong(songIndex);
+	  audio.play(); playBtn.innerText='Pause';
+	}
+	function prev(){
+	  songIndex = (songIndex - 1 + songs.length) % songs.length;
+	  loadSong(songIndex);
+	  audio.play(); playBtn.innerText='Pause';
+	}
+	function loadSong(index){
+	  audio.src = songs[index];
+	  updateActiveSong(index);
+	}
+	function playSong(index){
+	  songIndex = index;
+	  loadSong(songIndex);
+	  audio.play();
+	  playBtn.innerText='Pause';
+	}
+	function updateActiveSong(index){
+	  for(let i=0;i<songList.length;i++){
+	    songList[i].classList.remove('active');
+	  }
+	  songList[index].classList.add('active');
+	}
+	audio.addEventListener('timeupdate', ()=>{
+	  const progressPercent = (audio.currentTime/audio.duration)*100;
+	  progress.style.width = progressPercent + '%';
+	});
+	function setProgress(e){
+	  const width = e.currentTarget.clientWidth;
+	  const clickX = e.offsetX;
+	  audio.currentTime = (clickX/width)*audio.duration;
+	}
+	volumeSlider.addEventListener('input', ()=>{
+	  audio.volume = volumeSlider.value;
+	});
+</script>
 </body>
 </html>
