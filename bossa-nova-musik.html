@@ -218,18 +218,18 @@
 	];
 	let songIndex = 0;
 	function playPause(){
-	  if(audio.paused){ audio.play(); playBtn.innerText='Pause'; }
+	  if(audio.paused){ audio.play(); playBtn.innerText='Pausieren'; }
 	  else{ audio.pause(); playBtn.innerText='Spielen'; }
 	}
 	function next(){
 	  songIndex = (songIndex + 1) % songs.length;
 	  loadSong(songIndex);
-	  audio.play(); playBtn.innerText='Pause';
+	  audio.play(); playBtn.innerText='Pausieren';
 	}
 	function prev(){
 	  songIndex = (songIndex - 1 + songs.length) % songs.length;
 	  loadSong(songIndex);
-	  audio.play(); playBtn.innerText='Pause';
+	  audio.play(); playBtn.innerText='Pausieren';
 	}
 	function loadSong(index){
 	  audio.src = songs[index];
@@ -239,7 +239,7 @@
 	  songIndex = index;
 	  loadSong(songIndex);
 	  audio.play();
-	  playBtn.innerText='Pause';
+	  playBtn.innerText='Pausieren';
 	}
 	function updateActiveSong(index){
 	  for(let i=0;i<songList.length;i++){
