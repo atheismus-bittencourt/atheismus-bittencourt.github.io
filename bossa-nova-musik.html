@@ -27,22 +27,12 @@
 		.controls
 		{
 			border-left: solid 1px #999;
-			border-top: solid 1px #999;
 			border-right: solid 1px #999;
+			border-top: solid 1px #999;
 			display: grid;
 			grid-template-columns: 1fr 1fr 1fr;
+			height: 32px;
 			margin-top: 10px;
-		}
-
-		.controls button
-		{
-			background: #fff;
-			border: none;
-			color: #025eee;
-			cursor: pointer;
-			font-size: 0.8rem;
-			font-weight: bold;
-			padding: 7px 0px 6px 0px;
 		}
 
 		.progress-container
@@ -69,7 +59,6 @@
 			font-weight: normal;
 			max-height: 145px;
 			overflow-y: auto;
-			text-align: left;
 		}
 
 		.song-list div
@@ -121,7 +110,15 @@
 			<audio id="audio" src="https://ateismo-bittencourt.github.io/media/music/01-aquarela-bossa-nova-paulo-bittencourt.mp3">
 			</audio>
 			<div class="controls">
-				<button style="border-right: solid 1px #999" onclick="prev()">Vorheriges</button><button style="border-right: solid 1px #999; font-size: 1rem" onclick="playPause()" id="playBtn">Spielen</button><button onclick="next()">Nächstes</button>
+				<div onclick="prev()" style="display: grid; place-items: center; border-left: solid 1px #999; transform: scaleX(-1)">
+					<img style="height: 13px" src="media/next.svg">
+				</div>
+				<div id="playBtn" onclick="playPause()" style="display: grid; place-items: center; border-right: solid 1px #999">
+					<img style="height: 17px" src="media/play.svg">
+				</div>
+				<div onclick="next()" style="display: grid; place-items: center">
+					<img style="height: 13px" src="media/next.svg">
+				</div>
 			</div>
 			<div class="progress-container" onclick="setProgress(event)">
 				<div class="progress" id="progress">
@@ -220,18 +217,18 @@
 	];
 	let songIndex = 0;
 	function playPause(){
-	  if(audio.paused){ audio.play(); playBtn.innerText='Pausieren'; }
-	  else{ audio.pause(); playBtn.innerText='Spielen'; }
+	  if(audio.paused){ audio.play(); playBtn.innerHTML='<img style="height: 17px" src="media/pause.svg">'; }
+	  else{ audio.pause(); playBtn.innerHTML='<img style="height: 17px" src="media/play.svg">'; }
 	}
 	function next(){
 	  songIndex = (songIndex + 1) % songs.length;
 	  loadSong(songIndex);
-	  audio.play(); playBtn.innerText='Pausieren';
+	  audio.play(); playBtn.innerHTML='<img style="height: 17px" src="media/pause.svg">';
 	}
 	function prev(){
 	  songIndex = (songIndex - 1 + songs.length) % songs.length;
 	  loadSong(songIndex);
-	  audio.play(); playBtn.innerText='Pausieren';
+	  audio.play(); playBtn.innerHTML='<img style="height: 17px" src="media/pause.svg">';
 	}
 	function loadSong(index){
 	  audio.src = songs[index];
@@ -241,7 +238,7 @@
 	  songIndex = index;
 	  loadSong(songIndex);
 	  audio.play();
-	  playBtn.innerText='Pausieren';
+	  playBtn.innerHTML='<img style="height: 17px" src="media/pause.svg">';
 	}
 	function updateActiveSong(index){
 	  for(let i=0;i<songList.length;i++){
