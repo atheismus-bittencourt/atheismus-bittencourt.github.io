@@ -55,7 +55,7 @@
 			border-left: solid 1px #999;
 			border-right: solid 1px #999;
 			border-bottom: solid 1px #999;
-			max-height: 255px;
+			max-height: 257px;
 			overflow-y: auto;
 		}
 
@@ -137,12 +137,12 @@
 					<img style="height: 13px" src="media/next.svg">
 				</div>
 			</div>
-			<div class="progress-container" onclick="setProgress(event)">
-				<div class="progress" id="progress">
+			<div onclick="setProgress(event)" class="progress-container">
+				<div id="progress" class="progress">
 				</div>
 			</div>
-			<div class="song-list" id="songList">
-				<div class="active" onclick="playSong(0)">
+			<div id="songList" class="song-list">
+				<div onclick="playSong(0)" class="active">
 					Aquarela<span class="song-list-authors">(Toquinho & Vinícius)</span>
 				</div>
 				<div onclick="playSong(1)">
@@ -181,7 +181,7 @@
 				<div onclick="playSong(12)">
 					Tarde em Itapuã<span class="song-list-authors">(Toquinho & Vinícius)</span>
 				</div>
-				<div style="border-bottom: none" onclick="playSong(13)">
+				<div onclick="playSong(13)" style="border-bottom: none">
 					Caminhos Cruzados<span class="song-list-authors">(Jobim & Mendonça)</span>
 				</div>
 			</div>
