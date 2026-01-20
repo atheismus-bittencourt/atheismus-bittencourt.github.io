@@ -235,7 +235,7 @@
 	let songIndex = 0;
 	function playPause(){
 	  if(audio.paused){ audio.play(); playBtn.innerHTML='<img style="height: 17px" src="media/pause.svg">'; }
-	  else{ audio.pause(); playBtn.innerHTML='<img style="height: 17px" src="media/play.svg">'; }
+	  else{ audio.pause(); playBtn.innerHTML='<img style="margin-left: 6px; height: 17px" src="media/play.svg">'; }
 	}
 	function next(){
 	  songIndex = (songIndex + 1) % songs.length;
