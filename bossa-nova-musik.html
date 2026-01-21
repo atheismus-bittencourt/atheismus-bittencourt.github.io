@@ -9,19 +9,8 @@
 	<meta property="og:image" content="media/paulo-bittencourt-musica-bossa-nova.jpg">
 	<style>		.player
 		{
-			border: solid 1px #bbb;
-			border-radius: 4px;
-			color: #000;
 			font-family: 'Roboto';
-			margin-top: 31px;
-			padding: 3px 10px 10px 10px;
-			text-align: center;
-		}
-
-		audio
-		{
-			margin-bottom: 20px;
-			width: 100%;
+			margin-top: -9px;
 		}
 
 		.controls
@@ -29,10 +18,10 @@
 			border-left: solid 1px #999;
 			border-top: solid 1px #999;
 			border-right: solid 1px #999;
+			cursor: pointer;
 			display: grid;
 			grid-template-columns: 1fr 1fr 1fr;
 			height: 32px;
-			margin-top: 10px;
 		}
 
 		.progress-container
@@ -120,21 +109,21 @@
 			Ich habe Operngesang studiert (im berühmten Konservatorium der Stadt Wien, das heute einen anderen Namen hat), aber gebe zu: meine Lieblingsmusik ist die Bossa Nova. Dieser Musikstil gefällt mir so sehr, dass ich sogar mir die Mühe gemacht habe, Gitarre zu lernen, nur um Bossa Nova spielen, mich selbst begleiten zu können.<br>
 			<span class="indent">Falls Sie es nicht wissen: Bossa Nova bedeutet in etwa Neue Coolness, Neue Kultiviertheit, und ist Ende der 1950er Jahre in Brasilien entstanden, genauer gesagt in Rio de Janeiro, wo junge Musiker (u. a. Antônio Carlos Jobim, João Gilberto, Baden Powell und Vinícius de Moraes) den damaligen Musikgeschmack altmodisch gefunden und sich für Jazz interessiert haben. Einfach gesagt ist Bossa Nova eine Mischung aus Samba und Jazz, ein cooler, intimer Samba, der nicht zum Tanzen, sondern zum Zuhören ist.</span>
 		</p>
+		<h5>
+			Paulo Bittencourts Musik
+		</h5>
 		<div class="player">
-			<h2 style="margin-top: 9px; font-size: 1.2rem">
-				Paulo Bittencourts Musik
-			</h2>
 			<audio id="audio" src="https://ateismo-bittencourt.github.io/media/music/01-aquarela-bossa-nova-paulo-bittencourt.mp3">
 			</audio>
 			<div class="controls">
 				<div onclick="prev()" style="display: grid; place-items: center; border-left: solid 1px #999; transform: scaleX(-1)">
-					<img style="height: 13px" src="media/next.svg">
+					<img style="height: 13px" alt="vorheriges" src="media/next.svg">
 				</div>
 				<div id="playBtn" onclick="playPause()" style="display: grid; place-items: center; border-right: solid 1px #999">
-					<img style="margin-left: 6px; height: 17px" src="media/play.svg">
+					<img style="margin-left: 6px; height: 17px" alt="spielen" src="media/play.svg">
 				</div>
 				<div onclick="next()" style="display: grid; place-items: center">
-					<img style="height: 13px" src="media/next.svg">
+					<img style="height: 13px" alt="nächstes" src="media/next.svg">
 				</div>
 			</div>
 			<div onclick="setProgress(event)" class="progress-container">
