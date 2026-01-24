@@ -7,68 +7,97 @@
 	<link rel="icon" type="image/svg+xml" href="media/paulo-bittencourt.svg">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<meta property="og:image" content="media/paulo-bittencourt-musica-bossa-nova.jpg">
-	<style>		.player
+	<style>
+		.player-container
 		{
 			font-family: 'Roboto', Sans-Serif;
 			margin-top: -9px;
 		}
 
-		.controls
+		audio { display: none; }
+		.icon-backward:before { content: '\ea1f'; }
+		.icon-play:before { content: '\ea1c'; }
+		.icon-pause:before { content: '\ea1d'; }
+		.icon-forward:before { content: '\ea25'; }
+		.icon-volume-up:before { content: '\ea27'; }
+		.icon-volume-off:before { content: '\ea29'; }
+
+		.controlBar
 		{
-			border-left: solid 1px #999;
-			border-top: solid 1px #999;
-			border-right: solid 1px #999;
-			cursor: pointer;
 			display: grid;
 			grid-template-columns: 1fr 1fr 1fr;
+			outline-offset: -1px;
+			outline: solid 1px #999;
 		}
 
-		.controls div { padding: 9px 0px 9px 0px; }
-
-		.progress-container
+		#backButton
 		{
-			border-top: solid 1px #999;
-			border-bottom: solid 1px #999;
-			cursor: pointer;
-			height: 11px;
-		}
-
-		.progress
-		{
-			background: #025eee;
-			height: 11px;
-			width: 0%;
-		}
-
-		.song-list
-		{
-			border-left: solid 1px #999;
-			border-right: solid 1px #999;
-			border-bottom: solid 1px #999;
-			max-height: 257px;
-			overflow-y: auto;
-		}
-
-		.song-list div
-		{
-			border-bottom: 1px solid;
-			border-image: linear-gradient(0.25turn, rgba(0, 0, 0, 0), rgba(204, 204, 204, 1), rgba(0, 0, 0, 0));
-			border-image-slice: 1;
-			cursor: pointer;
-			font-size: 1.1rem;
-			font-weight: normal;
-			line-height: 1.1;
-			padding: 6px 0px 6px 0px;
+			font-size: 1.3rem;
+			padding-top: 10px;
 			text-align: center;
 		}
 
-		.song-list .active
+		#playButton
 		{
-			background: #f5f5f5;
-			border-top: 1px solid;
-			border-bottom: 1px solid;
+			font-size: 1.5rem;
+			outline-offset: -1px;
+			outline: solid 1px #999;
+			text-align: center;
+			padding-top: 7px;
+			padding-bottom: 1px;
+		}
+
+		#forwardButton
+		{
+			font-size: 1.3rem;
+			padding-top: 10px;
+			text-align: center;
+		}
+
+		#volumeBar { display: none; }
+		#volumeRail { display: none; }
+		.currentTime { display: none; }
+		.totalTime { display: none; }
+
+		#progressBar
+		{
+			background: #025eee;
+			height: 9px;
+			margin: 0px;
+			width: 0%;
+		}
+
+		#playlist
+		{
+			max-height: 248px;
+			outline-offset: -1px;
+			outline: solid 1px #999;
+			overflow-y: auto;
+		}
+
+		.playlist-item
+		{
+			border-bottom: solid 1px;
+			border-image: linear-gradient(0.25turn, rgba(0, 0, 0, 0), rgba(204, 204, 204, 1), rgba(0, 0, 0, 0));
+			border-image-slice: 1;
+			cursor: pointer;
+			display: block;
+			font-size: 1.1rem;
+			font-weight: normal;
+			line-height: 1.1;
+			padding: 5px 0px 5px 0px;
+			text-align: center;
+		}
+
+		a.playlist-item { color: #000; }
+
+		a.playlist-item.active
+		{
+			border-top: solid 1px;
+			border-bottom: solid 1px;
 			border-image: linear-gradient(0.25turn, rgba(204, 204, 204, 1), rgba(204, 204, 204, 1), rgba(204, 204, 204, 1));
 			border-image-slice: 1;
+			background: #f5f5f5;
 			margin-top: -1px;
 		}
 
@@ -76,8 +105,7 @@
 		{
 			display: block;
 			font-size: 0.9rem;
-		}
-</style>
+		}</style>
 </head>
 <body>
 <a class="navigation-button-top-left" href="/">&#9776;&#xfe0e;</a>
@@ -113,67 +141,43 @@
 		<h5>
 			Paulo Bittencourts Musik
 		</h5>
-		<div class="player">
-			<audio id="audio" src="https://ateismo-bittencourt.github.io/media/music/01-aquarela-bossa-nova-paulo-bittencourt.mp3">
+		<div class="player-container">
+			<audio id="audioPlayer" class="audio" preload="auto" controls>
 			</audio>
-			<div class="controls">
-				<div onclick="prev()" style="display: grid; place-items: center; border-left: solid 1px #999; transform: scaleX(-1)">
-					<img style="height: 13px" alt="vorheriges" src="media/next.svg">
+			<div class="controlBar">
+				<div id="backButton">
+					<div class="icon-backward">
+					</div>
 				</div>
-				<div id="playBtn" onclick="playPause()" style="display: grid; place-items: center; border-right: solid 1px #999">
-					<img style="margin-left: 6px; height: 17px" alt="spielen" src="media/play.svg">
+				<div id="playButton">
+					<div class="icon-play">
+					</div>
 				</div>
-				<div onclick="next()" style="display: grid; place-items: center">
-					<img style="height: 13px" alt="nächstes" src="media/next.svg">
+				<div id="forwardButton">
+					<div class="icon-forward">
+					</div>
+				</div>
+				<div class="currentTime">
+				</div>
+				<div class="totalTime">
+				</div>
+				<div id="muteButton" style="display: none">
+					<div class="icon-volume-up">
+					</div>
+				</div>
+				<div style="display: none">
+					<div id="volumeRail">
+						<div id="volumeBar">
+						</div>
+					</div>
 				</div>
 			</div>
-			<div onclick="setProgress(event)" class="progress-container">
-				<div id="progress" class="progress">
+			<div id="progressRail">
+				<div id="progressBar">
 				</div>
 			</div>
-			<div id="songList" class="song-list">
-				<div onclick="playSong(0)" class="active">
-					Aquarela<span class="song-list-authors">(Toquinho & Vinícius)</span>
-				</div>
-				<div onclick="playSong(1)">
-					O Que Será<span class="song-list-authors">(Buarque)</span>
-				</div>
-				<div onclick="playSong(2)">
-					Tem Dó<span class="song-list-authors">(Powell & Vinícius)</span>
-				</div>
-				<div onclick="playSong(3)">
-					Tamanco no Samba<span class="song-list-authors">(Orlandivo)</span>
-				</div>
-				<div onclick="playSong(4)">
-					Bonita<span class="song-list-authors">(Jobim)</span>
-				</div>
-				<div onclick="playSong(5)">
-					Começou de Brincadeira<span class="song-list-authors">(Mascarenhas)</span>
-				</div>
-				<div onclick="playSong(6)">
-					Copacabana<span class="song-list-authors">(Braga & Ribeiro)</span>
-				</div>
-				<div onclick="playSong(7)">
-					Deixa<span class="song-list-authors">(Powell & Vinícius)</span>
-				</div>
-				<div onclick="playSong(8)">
-					Desencontro<span class="song-list-authors">(Buarque)</span>
-				</div>
-				<div onclick="playSong(9)">
-					Melodia Sentimental<span class="song-list-authors">(Villa-Lobos & Vasconcellos)</span>
-				</div>
-				<div onclick="playSong(10)">
-					Mocinho Bonito<span class="song-list-authors">(Blanco)</span>
-				</div>
-				<div onclick="playSong(11)">
-					Sonho de Um Carnaval<span class="song-list-authors">(Buarque)</span>
-				</div>
-				<div onclick="playSong(12)">
-					Tarde em Itapuã<span class="song-list-authors">(Toquinho & Vinícius)</span>
-				</div>
-				<div onclick="playSong(13)" style="border-bottom: none">
-					Caminhos Cruzados<span class="song-list-authors">(Jobim & Mendonça)</span>
-				</div>
+			<div id="playlist">
+				<a class="playlist-item active" href="media/music/01-aquarela-bossa-nova-paulo-bittencourt.mp3">Aquarela<span class="song-list-authors">(Toquinho & Vinícius)</span></a><a class="playlist-item" href="media/music/10-o-que-sera-bossa-nova-paulo-bittencourt.mp3">O Que Será<span class="song-list-authors">(Buarque)</span></a><a class="playlist-item" href="media/music/14-tem-do-bossa-nova-paulo-bittencourt.mp3">Tem Dó<span class="song-list-authors">(Powell & Vinícius)</span></a><a class="playlist-item" href="media/music/12-tamanco-no-samba-bossa-nova-paulo-bittencourt.mp3">Tamanco no Samba<span class="song-list-authors">(Orlandivo)</span></a><a class="playlist-item" href="media/music/02-bonita-bossa-nova-paulo-bittencourt.mp3">Bonita<span class="song-list-authors">(Jobim)</span></a><a class="playlist-item" href="media/music/04-comecou-de-brincadeira-bossa-nova-paulo-bittencourt.mp3">Começou de Brincadeira<span class="song-list-authors">(Mascarenhas)</span></a><a class="playlist-item" href="media/music/05-copacabana-bossa-nova-paulo-bittencourt.mp3">Copacabana<span class="song-list-authors">(Braga & Ribeiro)</span></a><a class="playlist-item" href="media/music/06-deixa-bossa-nova-paulo-bittencourt.mp3">Deixa<span class="song-list-authors">(Powell & Vinícius)</span></a><a class="playlist-item" href="media/music/07-desencontro-bossa-nova-paulo-bittencourt.mp3">Desencontro<span class="song-list-authors">(Buarque)</span></a><a class="playlist-item" href="media/music/08-melodia-sentimental-bossa-nova-paulo-bittencourt.mp3">Melodia Sentimental<span class="song-list-authors">(Villa-Lobos & Vasconcellos)</span></a><a class="playlist-item" href="media/music/09-mocinho-bonito-bossa-nova-paulo-bittencourt.mp3">Mocinho Bonito<span class="song-list-authors">(Blanco)</span></a><a class="playlist-item" href="media/music/11-sonho-de-um-carnaval-bossa-nova-paulo-bittencourt.mp3">Sonho de Um Carnaval<span class="song-list-authors">(Buarque)</span></a><a class="playlist-item" href="media/music/13-tarde-em-itapua-bossa-nova-paulo-bittencourt.mp3">Tarde em Itapuã<span class="song-list-authors">(Toquinho & Vinícius)</span></a><a class="playlist-item" href="media/music/03-caminhos-cruzados-bossa-nova-paulo-bittencourt.mp3">Caminhos Cruzados<span class="song-list-authors">(Jobim & Mendonça)</span></a>
 			</div>
 		</div>
 		<div style="margin-top: 39px; margin-bottom: 33px; text-align: center">
@@ -201,70 +205,256 @@
 	</div>
 </div>
 <script>
-	const audio = document.getElementById('audio');
-	const playBtn = document.getElementById('playBtn');
-	const progress = document.getElementById('progress');
-	const volumeSlider = document.getElementById('volume');
-	const songList = document.getElementById('songList').children;
-	const songs = [
-	  'https://ateismo-bittencourt.github.io/media/music/01-aquarela-bossa-nova-paulo-bittencourt.mp3',
-	  'https://ateismo-bittencourt.github.io/media/music/10-o-que-sera-bossa-nova-paulo-bittencourt.mp3',
-	  'https://ateismo-bittencourt.github.io/media/music/14-tem-do-bossa-nova-paulo-bittencourt.mp3',
-	  'https://ateismo-bittencourt.github.io/media/music/12-tamanco-no-samba-bossa-nova-paulo-bittencourt.mp3',
-	  'https://ateismo-bittencourt.github.io/media/music/02-bonita-bossa-nova-paulo-bittencourt.mp3',
-	  'https://ateismo-bittencourt.github.io/media/music/04-comecou-de-brincadeira-bossa-nova-paulo-bittencourt.mp3',
-	  'https://ateismo-bittencourt.github.io/media/music/05-copacabana-bossa-nova-paulo-bittencourt.mp3',
-	  'https://ateismo-bittencourt.github.io/media/music/06-deixa-bossa-nova-paulo-bittencourt.mp3',
-	  'https://ateismo-bittencourt.github.io/media/music/07-desencontro-bossa-nova-paulo-bittencourt.mp3',
-	  'https://ateismo-bittencourt.github.io/media/music/08-melodia-sentimental-bossa-nova-paulo-bittencourt.mp3',
-	  'https://ateismo-bittencourt.github.io/media/music/09-mocinho-bonito-bossa-nova-paulo-bittencourt.mp3',
-	  'https://ateismo-bittencourt.github.io/media/music/11-sonho-de-um-carnaval-bossa-nova-paulo-bittencourt.mp3',
-	  'https://ateismo-bittencourt.github.io/media/music/13-tarde-em-itapua-bossa-nova-paulo-bittencourt.mp3',
-	  'https://ateismo-bittencourt.github.io/media/music/03-caminhos-cruzados-bossa-nova-paulo-bittencourt.mp3'
-	];
-	let songIndex = 0;
-	function playPause(){
-	  if(audio.paused){ audio.play(); playBtn.innerHTML='<img style="height: 17px" src="media/pause.svg">'; }
-	  else{ audio.pause(); playBtn.innerHTML='<img style="margin-left: 6px; height: 17px" src="media/play.svg">'; }
+	/* Audio Player Controls */
+	// Song Location Indicator
+	var mainOffSet = document.querySelector(".controlBar").getBoundingClientRect().x;
+	var progressBar = document.getElementById("progressBar");
+	var progressRail = document.getElementById("progressRail");
+	var maxProgress = document.getElementById("progressRail").offsetWidth;
+
+	// Volume Indicator
+	var volumeBar = document.getElementById("volumeBar");
+	var volumeRail = document.getElementById("volumeRail");
+	var maxVolume = document.getElementById("volumeRail").offsetWidth;
+
+	// Buttons
+	var playButton = document.getElementById("playButton");
+	var muteButton = document.getElementById("muteButton")
+	var forwardButton = document.getElementById("forwardButton")
+	var backButton = document.getElementById("backButton")
+
+	/* Playlist control script */
+	var player = document.getElementById("audioPlayer");
+	var playlist = document.getElementById("playlist");
+
+	// Misc variables
+	var mute = false;
+	var volTotal = "100%";
+
+	/* Time Text */
+	var totalMin;
+	var totalSec;
+
+	var dragProgress = false; // Progress Control
+	var dragVolume = false; // Volume Control
+
+	volumeBar.style.width = "100%";
+	// -------------------------------------------------
+	// Update off sets when screen is resized or rotated
+	function updateWindowOffsets() {
+	  mainOffSet = document.querySelector(".controlBar").getBoundingClientRect().x;
+	  maxProgress = document.getElementById("progressRail").offsetWidth;
+	  maxVolume = document.getElementById("volumeRail").offsetWidth;
 	}
-	function next(){
-	  songIndex = (songIndex + 1) % songs.length;
-	  loadSong(songIndex);
-	  audio.play(); playBtn.innerHTML='<img style="height: 17px" src="media/pause.svg">';
+
+	window.onresize = updateWindowOffsets;
+	screen.addEventListener("orientationchange", () => {
+	  updateWindowOffsets();
+	});
+
+	// Button toggles
+	function toggleMute() {
+	  muteButton.firstElementChild.classList.replace("icon-volume-off", "icon-volume-up");
+	  mute = false;
 	}
-	function prev(){
-	  songIndex = (songIndex - 1 + songs.length) % songs.length;
-	  loadSong(songIndex);
-	  audio.play(); playBtn.innerHTML='<img style="height: 17px" src="media/pause.svg">';
-	}
-	function loadSong(index){
-	  audio.src = songs[index];
-	  updateActiveSong(index);
-	}
-	function playSong(index){
-	  songIndex = index;
-	  loadSong(songIndex);
-	  audio.play();
-	  playBtn.innerHTML='<img style="height: 17px" src="media/pause.svg">';
-	}
-	function updateActiveSong(index){
-	  for(let i=0;i<songList.length;i++){
-	    songList[i].classList.remove('active');
+
+	function muteIt(e) {
+	  if (mute) {
+	    toggleMute();
+	    volumeBar.style.width = volTotal;
+	    player.volume = parseInt(volumeBar.style.width, 10) / 100;
+	  } else {
+	    muteButton.firstElementChild.classList.replace("icon-volume-up", "icon-volume-off");
+	    mute = true;
+	    volTotal = volumeBar.style.width;
+	    volumeBar.style.width = "0%";
+	    player.volume = 0;
 	  }
-	  songList[index].classList.add('active');
 	}
-	audio.addEventListener('timeupdate', ()=>{
-	  const progressPercent = (audio.currentTime/audio.duration)*100;
-	  progress.style.width = progressPercent + '%';
-	});
-	function setProgress(e){
-	  const width = e.currentTarget.clientWidth;
-	  const clickX = e.offsetX;
-	  audio.currentTime = (clickX/width)*audio.duration;
+
+	function playIt(e) {
+	  let playing = playButton.firstElementChild.classList.contains("icon-pause");
+
+	  if (playing) {
+	    playButton.firstElementChild.classList.replace("icon-pause", "icon-play");
+	    player.pause();
+	  } else {
+	    playButton.firstElementChild.classList.replace("icon-play", "icon-pause");
+	    player.play();
+	  }
 	}
-	volumeSlider.addEventListener('input', ()=>{
-	  audio.volume = volumeSlider.value;
-	});
+
+	function progressMove(e) {
+	  let clientLoc;
+	  if (e.touches) {
+	    clientLoc = e.touches[0].clientX;
+	  } else {
+	    clientLoc = e.clientX;
+	  }
+
+	  dragProgress = true;
+
+	  let loc = clientLoc - mainOffSet - progressRail.offsetLeft;
+	  progressBar.style.width = loc / maxProgress * 100 + "%";
+	  player.currentTime = Math.min(player.duration * loc / maxProgress, player.duration - 0.1);
+	}
+
+	function volumeMove(e) {
+	  let clientLoc;
+	  if (e.touches) {
+	    clientLoc = e.touches.item(0).clientX;
+	  } else {
+	    clientLoc = e.clientX;
+	  }
+
+	  if (mute) {toggleMute()}
+
+	  dragVolume = true;
+	  let loc = clientLoc - mainOffSet - volumeRail.offsetLeft;
+
+	  volumeBar.style.width = loc / maxVolume * 100 + "%";
+	  player.volume = parseInt(volumeBar.style.width, 10) / 100;
+	}
+
+	function scrubProgress(e) {
+	  let clientLoc;
+	  if (e.touches) {
+	    clientLoc = e.touches[0].clientX;
+	  } else {
+	    clientLoc = e.clientX;
+	  }
+	  // Progress
+	  if (dragProgress) {
+	    let loc = clientLoc - mainOffSet - progressRail.offsetLeft;
+
+	    if (loc >= progressRail.offsetWidth) {
+	      progressBar.style.width = "100%";
+	      player.currentTime = player.duration - 0.1
+
+	    } else {
+	      progressBar.style.width = loc / maxProgress * 100 + "%";
+	      player.currentTime = player.duration * loc / maxProgress;
+	    }
+	  }
+	  // Volume
+	  if (dragVolume) {
+	    let loc = clientLoc - mainOffSet - volumeRail.offsetLeft;
+
+	    if (loc >= volumeRail.offsetWidth) {
+	      volumeBar.style.width = "100%";
+	    } else {
+	      volumeBar.style.width = loc / maxVolume * 100 + "%";
+	      if (mute) {
+	        toggleMute();
+	      }
+	    }
+
+	    if (volumeBar.style.width == "0%") {
+	      muteButton.firstElementChild.classList.replace("icon-volume-up", "icon-volume-off");
+	      mute = true;
+	    }
+	    player.volume = parseInt(volumeBar.style.width, 10) / 100
+	  }
+	}
+
+	function getTime() {
+	  let totalTime = document.querySelector(".totalTime");
+	  totalMin = Math.floor(player.duration / 60);
+	  totalSec = Math.floor(player.duration % 60);
+	  // Fix display of time if seconds is less than 10
+	  if (totalSec < 10) {
+	    totalSec = "0" + totalSec;
+	  }
+
+	  totalTime.innerText = "/ " + totalMin + ":" + totalSec;
+	  document.querySelector(".currentTime").innerText = "0" + ":" + "00";
+	}
+
+	function updateTime() {
+	  let currentTime = document.querySelector(".currentTime");
+	  let min = Math.floor(player.currentTime / 60);
+	  let sec = Math.floor(player.currentTime % 60);
+
+	  if (sec < 10) {
+	    sec = "0" + sec;
+	  }
+	  currentTime.innerText = min + ":" + sec;
+	  progressBar.style.width = player.currentTime / player.duration * 100 + "%";
+	}
+
+	/* Playlist Selection controls */
+	function playOnClick(e) {
+	  let anchorElement = document.querySelector(".playlist-item.active")
+
+	  anchorElement.classList.remove("active");
+	  e.target.classList.add("active");
+	  e.preventDefault();
+	  player.src = e.target;
+	  playButton.firstElementChild.classList.add("icon-pause")
+	  playButton.firstElementChild.classList.remove("icon-play")
+	  player.play();
+	}
+
+	function playNext(e) {
+	  let anchorElement = document.querySelector(".playlist-item.active")
+	  let nextSong = anchorElement.nextElementSibling;
+
+	  if (nextSong) {
+	    player.pause();
+	    anchorElement.classList.remove("active");
+	    nextSong.classList.add("active");
+	    player.src = nextSong;
+	    player.play();
+	    playButton.firstElementChild.classList.replace("icon-play", "icon-pause");
+	  } else {
+	    playButton.firstElementChild.classList.remove("icon-pause")
+	    playButton.firstElementChild.classList.add("icon-play")
+	    player.pause()
+	  }
+	}
+
+	function playPrevious(e) {
+	  let anchorElement = document.querySelector(".playlist-item.active")
+	  let previousSong = anchorElement.previousElementSibling;
+
+	  if (previousSong) {
+	    anchorElement.classList.remove("active");
+	    previousSong.classList.add("active");
+	    player.src = previousSong;
+	    player.play();
+	    playButton.firstElementChild.classList.replace("icon-play", "icon-pause");
+	  }
+	}
+
+	function checkDrag() {
+	  if (dragProgress) {dragProgress = false};
+	  if (dragVolume) {dragVolume = false};
+	}
+	// --------------------------------------------------------------
+	// Can use evenytype to determine behavior, or e.preventDefault()
+	progressRail.addEventListener("mousedown",  progressMove, false)
+	volumeRail.addEventListener("mousedown",  volumeMove, false)
+
+	muteButton.addEventListener("click", muteIt, false) // Mute Button
+	playButton.addEventListener("click", playIt, false) // Play-Pause Button
+	forwardButton.addEventListener("click", playNext, false)
+	backButton.addEventListener("click", playPrevious, false)
+
+	/* Document Listeners */
+	// Progress and volume dragging/scrub
+	document.addEventListener("mousemove", scrubProgress, false)
+	document.addEventListener("click", checkDrag, false) // Toggle dragging variables
+
+	player.onloadeddata = (event) => { getTime() }
+	player.addEventListener("timeupdate", updateTime, false)
+	player.addEventListener("ended", playNext, false)
+
+	/* Playlist */
+	for (child of playlist.children) {
+	  child.addEventListener("click", playOnClick, false);
+	}
+
+	player.src = playlist.firstElementChild.href
 </script>
 </body>
 </html>
