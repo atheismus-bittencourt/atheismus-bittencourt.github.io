@@ -15,10 +15,39 @@
 		}
 
 		audio { display: none; }
-		.icon-backward:before { content: '\ea1f'; }
-		.icon-play:before { content: '\ea1c'; }
-		.icon-pause:before { content: '\ea1d'; }
-		.icon-forward:before { content: '\ea25'; }
+
+		.icon-backward:before
+		{
+			content: '\ea1f';
+			display: block;
+			font-size: 1.5rem;
+			margin: 3px 0px -3px 0px;
+		}
+
+		.icon-play:before
+		{
+			content: '\ea1c';
+			display: block;
+			font-size: 1.5rem;
+			margin: 3px 0px -3px 5px;
+		}
+
+		.icon-pause:before
+		{
+			content: '\ea1d';
+			display: block;
+			font-size: 1.5rem;
+			margin: 3px 0px -3px 0px;
+		}
+
+		.icon-forward:before
+		{
+			content: '\ea25';
+			display: block;
+			font-size: 1.5rem;
+			margin: 3px 0px -3px 0px;
+		}
+
 		.icon-volume-up:before { content: '\ea27'; }
 		.icon-volume-off:before { content: '\ea29'; }
 
@@ -30,30 +59,16 @@
 			outline: solid 1px #999;
 		}
 
-		#backButton
-		{
-			font-size: 1.3rem;
-			padding-top: 10px;
-			text-align: center;
-		}
+		#backButton { text-align: center; }
 
 		#playButton
 		{
-			font-size: 1.5rem;
 			outline-offset: -1px;
 			outline: solid 1px #999;
 			text-align: center;
-			padding-top: 7px;
-			padding-bottom: 1px;
 		}
 
-		#forwardButton
-		{
-			font-size: 1.3rem;
-			padding-top: 10px;
-			text-align: center;
-		}
-
+		#forwardButton { text-align: center; }
 		#volumeBar { display: none; }
 		#volumeRail { display: none; }
 		.currentTime { display: none; }
@@ -105,7 +120,8 @@
 		{
 			display: block;
 			font-size: 0.9rem;
-		}</style>
+		}
+</style>
 </head>
 <body>
 <a class="navigation-button-top-left" href="/">&#9776;&#xfe0e;</a>
