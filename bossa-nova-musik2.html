@@ -7,7 +7,8 @@
 	<link rel="icon" type="image/svg+xml" href="media/paulo-bittencourt.svg">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<meta property="og:image" content="media/paulo-bittencourt-musica-bossa-nova.jpg">
-	<style>		.player-container
+	<style>
+		.player-container
 		{
 			font-family: 'Roboto', Sans-Serif;
 			margin-top: -9px;
@@ -82,10 +83,11 @@
 		.currentTime
 		{
 			padding-left: 5px;
-			padding-right: 3px;
+			padding-right: 4px;
 		}
 
 		.totalTime { width: 40px; }
+		.totalTime::after { content: ")"; }
 
 		#progressBar
 		{
@@ -171,7 +173,7 @@
 			Paulo Bittencourts Musik
 		</h5>
 		<div class="player-container">
-			<audio id="audioPlayer" class="audio" preload="auto" controls>
+			<audio id="audioPlayer" controls type="audio/mpeg" class="audio" preload="auto">
 			</audio>
 			<div class="controlBar">
 				<div id="backButton">
@@ -397,7 +399,7 @@
 	    totalSec = "0" + totalSec;
 	  }
 
-	  totalTime.innerText = "/ " + totalMin + ":" + totalSec;
+	  totalTime.innerText = "(" + totalMin + ":" + totalSec;
 	  document.querySelector(".currentTime").innerText = "0" + ":" + "00";
 	}
 
