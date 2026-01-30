@@ -29,7 +29,7 @@
 			border-radius: 5px;
 			cursor: pointer;
 			height: 10px;
-			margin: 32px 12px 0px 12px;
+			margin: 4px 12px 0px 12px;
 		}
 
 		.progress
@@ -49,11 +49,10 @@
 			border: solid 1px #999;
 			cursor: pointer;
 			margin-top: 5px;
-			padding: 11px 0px 8px 0px;
-			width: 70px;
+			padding-top: 2px;
+			height: 51px;
+			width: 51px;
 		}
-
-		.controls button:hover { background: #f5f5f5; }
 
 		#playlist
 		{
@@ -134,16 +133,16 @@
 				</h5>
 			</div>
 <!-- Progress Bar -->
-			<div class="progress-container" id="progress-container">
-				<div class="progress" id="progress">
+			<div id="progress-container" class="progress-container">
+				<div id="progress" class="progress">
 				</div>
 			</div>
 <!-- Controls -->
 			<div class="controls">
-				<button id="prev"><img style="height: 17px" alt="vorheriges" src="media/previous.svg"></button><button id="play" style="margin-left: 11px; margin-right: 11px"><img style="height: 17px; margin-left: 5px" alt="spielen" src="media/play.svg"></button><button id="next"><img style="height: 17px" alt="nächstes" src="media/next.svg"></button><button id="stop" style="display: none">Stop</button>
+				<button id="prev"><img style="height: 17px" alt="vorheriges" src="media/previous.svg"></button><button id="play" style="margin-left: 11px; margin-right: 11px"><img style="height: 17px" alt="spielen" src="media/play.svg"></button><button id="next"><img style="height: 17px" alt="nächstes" src="media/next.svg"></button><button id="stop" style="display: none">Stop</button>
 			</div>
 <!-- Playlist -->
-			<ul class="playlist" id="playlist">
+			<ul id="playlist" class="playlist">
 				<li class="active-song" data-src="media/music/01-aquarela-bossa-nova-paulo-bittencourt.mp3">Aquarela<span class="song-authors">(Toquinho & Vinícius)</span></li>
 				<li data-src="media/music/10-o-que-sera-bossa-nova-paulo-bittencourt.mp3">O Que Será<span class="song-authors">(Buarque)</span></li>
 				<li data-src="media/music/14-tem-do-bossa-nova-paulo-bittencourt.mp3">Tem Dó<span class="song-authors">(Powell & Vinícius)</span></li>
@@ -210,10 +209,10 @@
 	function togglePlay() {
 	    if (audio.paused) {
 	        audio.play();
-	        playBtn.innerHTML = '<img style="height: 17px" alt="spielen" src="media/pause.svg">';
+	        playBtn.innerHTML = '<img style="height: 17px" alt="pausieren" src="media/pause.svg">';
 	    } else {
 	        audio.pause();
-	        playBtn.innerHTML = '<img style="margin-left: 6px; height: 17px" alt="spielen" src="media/play.svg">';
+	        playBtn.innerHTML = '<img style="height: 17px" alt="spielen" src="media/play.svg">';
 	    }
 	}
 
@@ -221,7 +220,7 @@
 	function stopSong() {
 	    audio.pause();
 	    audio.currentTime = 0;
-	    playBtn.innerHTML = '<img style="height: 17px" alt="spielen" src="media/pause.svg">';
+	    playBtn.innerHTML = '<img style="height: 17px" alt="pausieren" src="media/pause.svg">';
 	}
 
 	// Next Song
@@ -240,7 +239,7 @@
 	    const nextSongItem = playlistItems[currentSongIndex];
 	    loadSong(nextSongItem.getAttribute('data-src'), nextSongItem.innerText);
 	    audio.play();
-	    playBtn.innerHTML = '<img style="height: 17px" alt="spielen" src="media/pause.svg">';
+	    playBtn.innerHTML = '<img style="height: 17px" alt="pausieren" src="media/pause.svg">';
 	    updateActiveTitle();
 	}
 
