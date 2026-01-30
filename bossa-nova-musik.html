@@ -10,7 +10,7 @@
 	<style>		.player-container
 		{
 			background: #fff;
-			margin-top: 46px;
+			margin-top: -9px;
 			outline: solid 1px #999;
 			outline-offset: -1px;
 			text-align: center;
@@ -22,14 +22,25 @@
 			padding: 0px;
 		}
 
+		.controls button
+		{
+			background: #fff;
+			border: solid 1px #999;
+			cursor: pointer;
+			margin-top: 12px;
+			padding-top: 4px;
+			height: 51px;
+			width: 51px;
+		}
+
 		.progress-container
 		{
 			background: #fff;
 			border: solid 1px #999;
 			border-radius: 5px;
 			cursor: pointer;
-			height: 10px;
-			margin: 4px 12px 0px 12px;
+			height: 11px;
+			margin: 11px 12px 0px 12px;
 		}
 
 		.progress
@@ -39,25 +50,6 @@
 			height: 100%;
 			transition: width 0.1s linear;
 			width: 0%;
-		}
-
-		.controls { margin-top: 6px; }
-
-		.controls button
-		{
-			background: #fff;
-			border: solid 1px #999;
-			cursor: pointer;
-			margin-top: 5px;
-			padding-top: 4px;
-			height: 51px;
-			width: 51px;
-		}
-
-		#playlist
-		{
-			border-top: solid 1px #999;
-			margin-top: 11px;
 		}
 
 		.playlist li
@@ -123,23 +115,23 @@
 			Ich habe Operngesang studiert (im berühmten Konservatorium der Stadt Wien, das heute einen anderen Namen hat), aber gebe zu: meine Lieblingsmusik ist die Bossa Nova. Dieser Musikstil gefällt mir so sehr, dass ich sogar mir die Mühe gemacht habe, Gitarre zu lernen, nur um Bossa Nova spielen, mich selbst begleiten zu können.<br>
 			<span class="indent">Falls Sie es nicht wissen: Bossa Nova bedeutet in etwa Neue Coolness, Neue Kultiviertheit, und ist Ende der 1950er Jahre in Brasilien entstanden, genauer gesagt in Rio de Janeiro, wo junge Musiker (u. a. Antônio Carlos Jobim, João Gilberto, Baden Powell und Vinícius de Moraes) den damaligen Musikgeschmack altmodisch gefunden und sich für Jazz interessiert haben. Einfach gesagt ist Bossa Nova eine Mischung aus Samba und Jazz, ein cooler, intimer Samba, der nicht zum Tanzen, sondern zum Zuhören ist.</span>
 		</p>
+		<h5>
+			Paulo Bittencourts Musik
+		</h5>
 		<div id="player" class="player-container">
 			<div class="current-song">
 				<h2 id="title" style="display: none">
 					Song Title
 				</h2>
-				<h5 style="padding-top: 34px; margin-bottom: 0px">
-					Paulo Bittencourts Musik
-				</h5>
+			</div>
+<!-- Controls -->
+			<div class="controls">
+				<button id="prev"><img style="height: 17px" alt="vorheriges" src="media/previous.svg"></button><button id="play" style="margin-left: 11px; margin-right: 11px"><img style="height: 17px" alt="spielen" src="media/play.svg"></button><button id="next"><img style="height: 17px" alt="nächstes" src="media/next.svg"></button><button id="stop" style="display: none">Stop</button>
 			</div>
 <!-- Progress Bar -->
 			<div id="progress-container" class="progress-container">
 				<div id="progress" class="progress">
 				</div>
-			</div>
-<!-- Controls -->
-			<div class="controls">
-				<button id="prev"><img style="height: 17px" alt="vorheriges" src="media/previous.svg"></button><button id="play" style="margin-left: 11px; margin-right: 11px"><img style="height: 17px" alt="spielen" src="media/play.svg"></button><button id="next"><img style="height: 17px" alt="nächstes" src="media/next.svg"></button><button id="stop" style="display: none">Stop</button>
 			</div>
 <!-- Playlist -->
 			<ul id="playlist" class="playlist">
