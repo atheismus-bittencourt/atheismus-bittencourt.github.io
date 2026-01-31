@@ -27,8 +27,10 @@
 			background: #fff;
 			border: solid 1px #999;
 			cursor: pointer;
+			font-family: 'Roboto', Sans-Serif;
+			font-size: 1.4rem;
 			margin-top: 12px;
-			padding-top: 4px;
+			padding-top: 5px;
 			height: 51px;
 			width: 51px;
 		}
@@ -126,7 +128,10 @@
 			</div>
 <!-- Controls -->
 			<div class="controls">
-				<button id="prev"><img style="height: 17px" alt="vorheriges" src="media/previous.svg"></button><button id="play" style="margin-left: 11px; margin-right: 11px"><img style="height: 17px" alt="spielen" src="media/play.svg"></button><button id="next"><img style="height: 17px" alt="nächstes" src="media/next.svg"></button><button id="stop" style="display: none">Stop</button>
+				<button id="prev">&#9198;</button>
+				<button id="play" style="margin-left: 11px; margin-right: 11px; padding-left: 9px">&#9654;</button>
+				<button id="next">&#9197;</button>
+				<button id="stop" style="display: none">Stop</button>
 			</div>
 <!-- Progress Bar -->
 			<div id="progress-container" class="progress-container">
@@ -201,10 +206,10 @@
 	function togglePlay() {
 	    if (audio.paused) {
 	        audio.play();
-	        playBtn.innerHTML = '<img style="height: 17px" alt="pausieren" src="media/pause.svg">';
+	        playBtn.innerHTML = '<span style="margin-left: -3px">&#9208;</span>';
 	    } else {
 	        audio.pause();
-	        playBtn.innerHTML = '<img style="height: 17px" alt="spielen" src="media/play.svg">';
+	        playBtn.innerHTML = '&#9654;';
 	    }
 	}
 
@@ -212,7 +217,7 @@
 	function stopSong() {
 	    audio.pause();
 	    audio.currentTime = 0;
-	    playBtn.innerHTML = '<img style="height: 17px" alt="pausieren" src="media/pause.svg">';
+	    playBtn.innerHTML = '<span style="margin-left: -3px">&#9208;</span>';
 	}
 
 	// Next Song
@@ -231,7 +236,7 @@
 	    const nextSongItem = playlistItems[currentSongIndex];
 	    loadSong(nextSongItem.getAttribute('data-src'), nextSongItem.innerText);
 	    audio.play();
-	    playBtn.innerHTML = '<img style="height: 17px" alt="pausieren" src="media/pause.svg">';
+	    playBtn.innerHTML = '<span style="margin-left: -3px">&#9208;</span>';
 	    updateActiveTitle();
 	}
 
