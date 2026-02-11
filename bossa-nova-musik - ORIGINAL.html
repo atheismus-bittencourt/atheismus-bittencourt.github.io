@@ -7,8 +7,7 @@
 	<link rel="icon" type="image/svg+xml" href="media/paulo-bittencourt.svg">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<meta property="og:image" content="media/paulo-bittencourt-musica-bossa-nova.jpg">
-	<style>
-		.player-container
+	<style>		.player-container
 		{
 			background: #fff;
 			margin-top: -8px;
@@ -23,45 +22,25 @@
 			padding: 0px;
 		}
 
-		.controls
-		{
-			column-gap: 12px;
-			display: grid;
-			grid-template-columns: 5fr 1fr 1fr 1fr 5fr;
-			justify-items: center;
-			padding: 12px 13px 0px 13px;
-		}
-
 		.controls button
 		{
 			background: #fff;
 			border: solid 1px #999;
-			border-radius: 5px;
+			border-radius: 3px;
 			cursor: pointer;
 			font-family: 'Roboto', Sans-Serif;
 			font-size: 1.4rem;
-			height: 51px;
 			line-height: 2.4;
-		}
-
-		.speakers
-		{
-			background: #f9f9f9;
-			background-image: url('media/speaker-grid.png'), url('media/speaker.png');
-			background-position: top left, center;
-			background-size: 5px 5px, auto;
-			background-repeat: repeat, no-repeat;
-			border-radius: 5px;
-			border: solid 1px #999;
-			height: 49px;
-			width: 100%;
+			margin-top: 12px;
+			height: 51px;
+			width: 51px;
 		}
 
 		.progress-container
 		{
 			background: #fff;
-			border-radius: 5px;
 			border: solid 1px #999;
+			border-radius: 5px;
 			cursor: pointer;
 			height: 11px;
 			margin: 11px 12px 0px 12px;
@@ -98,10 +77,10 @@
 
 		.active-song
 		{
-			background: #f5f5f5;
 			border-bottom: solid 1px;
 			border-image: linear-gradient(0.25turn, rgba(204, 204, 204, 1), rgba(204, 204, 204, 1), rgba(204, 204, 204, 1));
 			border-image-slice: 1;
+			background: #f5f5f5;
 			margin-top: -1px;
 		}
 
@@ -162,11 +141,7 @@
 			</div>
 <!-- Controls -->
 			<div class="controls">
-				<div class="speakers">
-				</div>
-				<button id="prev" style="width: 51px">&#9198;</button> <button id="play" style="width: 51px; padding-left: 9px">&#9654;</button> <button id="next" style="width: 51px">&#9197;</button> <button id="stop" style="display: none">Stop</button>
-				<div class="speakers">
-				</div>
+				<button id="prev">&#9198;</button> <button id="play" style="margin-left: 7px; margin-right: 7px; padding-left: 9px">&#9654;</button> <button id="next">&#9197;</button> <button id="stop" style="display: none">Stop</button>
 			</div>
 <!-- Progress Bar -->
 			<div id="progress-container" class="progress-container">
@@ -176,18 +151,18 @@
 <!-- Playlist -->
 			<ul id="playlist" class="playlist">
 				<li class="active-song" data-src="media/music/01-aquarela-bossa-nova-paulo-bittencourt.mp3">Aquarela<span class="song-authors">(Toquinho & Vinícius)</span></li>
-				<li data-src="media/music/10-o-que-sera-bossa-nova-paulo-bittencourt.mp3">O Que Será<span class="song-authors">(Buarque)</span></li>
-				<li data-src="media/music/14-tem-do-bossa-nova-paulo-bittencourt.mp3">Tem Dó<span class="song-authors">(Powell & Vinícius)</span></li>
+				<li data-src="media/music/10-o-que-sera-bossa-nova-paulo-bittencourt.mp3">O Que Será<span class="song-authors">(Buarque)</span></li>
+				<li data-src="media/music/14-tem-do-bossa-nova-paulo-bittencourt.mp3">Tem Dó<span class="song-authors">(Powell & Vinícius)</span></li>
 				<li data-src="media/music/12-tamanco-no-samba-bossa-nova-paulo-bittencourt.mp3">Tamanco no Samba<span class="song-authors">(Orlandivo)</span></li>
 				<li data-src="media/music/02-bonita-bossa-nova-paulo-bittencourt.mp3">Bonita<span class="song-authors">(Jobim)</span></li>
-				<li data-src="media/music/04-comecou-de-brincadeira-bossa-nova-paulo-bittencourt.mp3">Começou de Brincadeira<span class="song-authors">(Mascarenhas)</span></li>
+				<li data-src="media/music/04-comecou-de-brincadeira-bossa-nova-paulo-bittencourt.mp3">Começou de Brincadeira<span class="song-authors">(Mascarenhas)</span></li>
 				<li data-src="media/music/05-copacabana-bossa-nova-paulo-bittencourt.mp3">Copacabana<span class="song-authors">(Braga & Ribeiro)</span></li>
 				<li data-src="media/music/06-deixa-bossa-nova-paulo-bittencourt.mp3">Deixa<span class="song-authors">(Powell & Vinícius)</span></li>
 				<li data-src="media/music/07-desencontro-bossa-nova-paulo-bittencourt.mp3">Desencontro<span class="song-authors">(Buarque)</span></li>
 				<li data-src="media/music/08-melodia-sentimental-bossa-nova-paulo-bittencourt.mp3">Melodia Sentimental<span class="song-authors">(Villa-Lobos & Vasconcellos)</span></li>
 				<li data-src="media/music/09-mocinho-bonito-bossa-nova-paulo-bittencourt.mp3">Mocinho Bonito<span class="song-authors">(Blanco)</span></li>
 				<li data-src="media/music/11-sonho-de-um-carnaval-bossa-nova-paulo-bittencourt.mp3">Sonho de Um Carnaval<span class="song-authors">(Buarque)</span></li>
-				<li data-src="media/music/13-tarde-em-itapua-bossa-nova-paulo-bittencourt.mp3">Tarde em Itapuã<span class="song-authors">(Toquinho & Vinícius)</span></li>
+				<li data-src="media/music/13-tarde-em-itapua-bossa-nova-paulo-bittencourt.mp3">Tarde em Itapuã<span class="song-authors">(Toquinho & Vinícius)</span></li>
 				<li data-src="media/music/03-caminhos-cruzados-bossa-nova-paulo-bittencourt.mp3">Caminhos Cruzados<span class="song-authors">(Jobim & Mendonça)</span></li>
 			</ul>
 		</div>
