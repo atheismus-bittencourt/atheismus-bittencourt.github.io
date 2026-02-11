@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<title>Paulo Bittencourts Stimme und Gitarre — Freidenkertum, Humanismus und Atheismus</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/svg+xml" href="media/paulo-bittencourt.svg">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<meta property="og:image" content="media/paulo-bittencourt-musica-bossa-nova.jpg">
+	<style>		.player-container
+		{
+			background: #fff;
+			margin-top: -8px;
+			outline: solid 1px #999;
+			outline-offset: -1px;
+			text-align: center;
+		}
+
+		.player-container ul, ol
+		{
+			margin: 0px;
+			padding: 0px;
+		}
+
+		.controls button
+		{
+			background: #fff;
+			border: solid 1px #999;
+			border-radius: 3px;
+			cursor: pointer;
+			font-family: 'Roboto', Sans-Serif;
+			font-size: 1.4rem;
+			line-height: 2.4;
+			margin-top: 12px;
+			height: 51px;
+			width: 51px;
+		}
+
+		.progress-container
+		{
+			background: #fff;
+			border: solid 1px #999;
+			border-radius: 5px;
+			cursor: pointer;
+			height: 11px;
+			margin: 11px 12px 0px 12px;
+		}
+
+		.progress
+		{
+			background: #005ddd;
+			border-radius: 4px;
+			height: 100%;
+			transition: width 0.1s linear;
+			width: 0%;
+		}
+
+		.playlist
+		{
+			max-height: 267px;
+			overflow-y: scroll;
+		}
+
+		.playlist li
+		{
+			border-bottom: solid 1px;
+			border-image: linear-gradient(0.25turn, rgba(0, 0, 0, 0), rgba(204, 204, 204, 1), rgba(0, 0, 0, 0));
+			border-image-slice: 1;
+			cursor: pointer;
+			display: block;
+			font-size: 1.1rem;
+			font-weight: normal;
+			line-height: 1.1;
+			margin: 0px;
+			padding: 7px 0px 7px 0px;
+		}
+
+		.active-song
+		{
+			border-bottom: solid 1px;
+			border-image: linear-gradient(0.25turn, rgba(204, 204, 204, 1), rgba(204, 204, 204, 1), rgba(204, 204, 204, 1));
+			border-image-slice: 1;
+			background: #f5f5f5;
+			margin-top: -1px;
+		}
+
+		.song-authors
+		{
+			display: block;
+			font-size: 0.9rem;
+		}
+
+		@media only screen and (min-width: 750px)
+		{
+			.playlist li { padding: 7px 0px 7px 15px; }
+			.playlist li:hover { background: #f5f5f5; }
+		}
+</style>
+</head>
+<body>
+<a class="navigation-button-top-left" href="/">&#9776;&#xfe0e;</a>
+<div class="wrapper">
+	<div class="header">
+		<a href="/"><img class="logo" alt="Paulo Bitencourt, freethinker, humanist and atheist" src="media/paulo-bittencourt.svg"></a>
+		<h2>
+			Paulo Bittencourt
+		</h2>
+		<h3>
+			Freidenkertum, Humanismus, Atheismus
+		</h3>
+		<h4>
+			“Ich will nicht glauben, ich will wissen.”
+		</h4>
+		<p class="top-links">
+			<a href="https://atheism-bittencourt.github.io/books" target="_blank">Bücher</a><span class="arrow">&#8599;&#xfe0e;</span> • <a href="https://atheism-bittencourt.github.io">English</a> • <a href="https://ateismo-bittencourt.github.io">Português</a> • <a href="https://bittencourt-ateismo.github.io">Español</a>
+		</p>
+		<hr class="header-separator">
+	</div>
+	<div class="main-div">
+		<h1>
+			Paulo Bittencourt Singt Bossa Nova
+		</h1>
+		<a href="#player"><img class="below-h1" alt="Bossa Nova, brasilianische Musik, gespielt auf der Gitarre und gesungen von Paulo Bitencourt" src="media/paulo-bittencourt-bossa-nova-musik.jpg" /></a>
+		<p class="caption">
+			Bossa Nova-Lieder interpretiert von Paulo Bittencourt.
+		</p>
+		<p class="no-indent" style="margin-top: 23px">
+			Ich habe Operngesang studiert (im berühmten Konservatorium der Stadt Wien, das heute einen anderen Namen hat), aber gebe zu: meine Lieblingsmusik ist die Bossa Nova. Dieser Musikstil gefällt mir so sehr, dass ich sogar mir die Mühe gemacht habe, Gitarre zu lernen, nur um Bossa Nova spielen, mich selbst begleiten zu können.
+		</p>
+		<p>
+			Falls Sie es nicht wissen: Bossa Nova bedeutet in etwa Neue Coolness, Neue Kultiviertheit, und ist Ende der 1950er Jahre in Brasilien entstanden, genauer gesagt in Rio de Janeiro, wo junge Musiker (u. a. Antônio Carlos Jobim, João Gilberto, Baden Powell und Vinícius de Moraes) den damaligen Musikgeschmack altmodisch gefunden und sich für Jazz interessiert haben. Einfach gesagt ist Bossa Nova eine Mischung aus Samba und Jazz, ein cooler, intimer Samba, der nicht zum Tanzen, sondern zum Zuhören ist.
+		</p>
+		<h5>
+			Paulo Bittencourts Musik
+		</h5>
+		<div id="player" class="player-container">
+			<div class="current-song">
+				<h2 id="title" style="display: none">
+					Song Title
+				</h2>
+			</div>
+<!-- Controls -->
+			<div class="controls">
+				<button id="prev">&#9198;</button> <button id="play" style="margin-left: 7px; margin-right: 7px; padding-left: 9px">&#9654;</button> <button id="next">&#9197;</button> <button id="stop" style="display: none">Stop</button>
+			</div>
+<!-- Progress Bar -->
+			<div id="progress-container" class="progress-container">
+				<div id="progress" class="progress">
+				</div>
+			</div>
+<!-- Playlist -->
+			<ul id="playlist" class="playlist">
+				<li class="active-song" data-src="media/music/01-aquarela-bossa-nova-paulo-bittencourt.mp3">Aquarela<span class="song-authors">(Toquinho & Vinícius)</span></li>
+				<li data-src="media/music/10-o-que-sera-bossa-nova-paulo-bittencourt.mp3">O Que Será<span class="song-authors">(Buarque)</span></li>
+				<li data-src="media/music/14-tem-do-bossa-nova-paulo-bittencourt.mp3">Tem Dó<span class="song-authors">(Powell & Vinícius)</span></li>
+				<li data-src="media/music/12-tamanco-no-samba-bossa-nova-paulo-bittencourt.mp3">Tamanco no Samba<span class="song-authors">(Orlandivo)</span></li>
+				<li data-src="media/music/02-bonita-bossa-nova-paulo-bittencourt.mp3">Bonita<span class="song-authors">(Jobim)</span></li>
+				<li data-src="media/music/04-comecou-de-brincadeira-bossa-nova-paulo-bittencourt.mp3">Começou de Brincadeira<span class="song-authors">(Mascarenhas)</span></li>
+				<li data-src="media/music/05-copacabana-bossa-nova-paulo-bittencourt.mp3">Copacabana<span class="song-authors">(Braga & Ribeiro)</span></li>
+				<li data-src="media/music/06-deixa-bossa-nova-paulo-bittencourt.mp3">Deixa<span class="song-authors">(Powell & Vinícius)</span></li>
+				<li data-src="media/music/07-desencontro-bossa-nova-paulo-bittencourt.mp3">Desencontro<span class="song-authors">(Buarque)</span></li>
+				<li data-src="media/music/08-melodia-sentimental-bossa-nova-paulo-bittencourt.mp3">Melodia Sentimental<span class="song-authors">(Villa-Lobos & Vasconcellos)</span></li>
+				<li data-src="media/music/09-mocinho-bonito-bossa-nova-paulo-bittencourt.mp3">Mocinho Bonito<span class="song-authors">(Blanco)</span></li>
+				<li data-src="media/music/11-sonho-de-um-carnaval-bossa-nova-paulo-bittencourt.mp3">Sonho de Um Carnaval<span class="song-authors">(Buarque)</span></li>
+				<li data-src="media/music/13-tarde-em-itapua-bossa-nova-paulo-bittencourt.mp3">Tarde em Itapuã<span class="song-authors">(Toquinho & Vinícius)</span></li>
+				<li data-src="media/music/03-caminhos-cruzados-bossa-nova-paulo-bittencourt.mp3">Caminhos Cruzados<span class="song-authors">(Jobim & Mendonça)</span></li>
+			</ul>
+		</div>
+		<audio id="audio-element">
+		</audio>
+		<div style="margin-top: 39px; margin-bottom: 33px; text-align: center">
+			<a href="https://www.paypal.com/donate?hosted_button_id=W8GZGFGKLCA9S" target="_blank"><span class="green-button">Gefällt Ihnen? Zahlen<br>
+			Sie mir einen Kaffee</span></a>
+		</div>
+		<p class="no-indent">
+			Verstehen Sie Englisch? Dann klicken Sie <a href="https://atheism-bittencourt.github.io/bossa-nova-music" target="_blank">hier</a><span class="arrow">&#8599;&#xfe0e;</span>, um meine <i>Geschichte der Bossa Nova</i> zu lesen.
+		</p>
+		<p class="languages">
+			<a href="https://atheism-bittencourt.github.io/bossa-nova-music">EN</a> • <a href="https://ateismo-bittencourt.github.io/musica-bossa-nova">PT</a>
+		</p>
+		<hr class="navigation-separator">
+		<div class="navigation">
+			<div>
+				<a href="familienname">&#9664;&#xfe0e;</a>
+			</div>
+			<div style="margin: 0 auto">
+				<a href="/">&#9776;&#xfe0e;</a>
+			</div>
+			<div style="text-align: right">
+				<a href="kontakt">&#9654;&#xfe0e;</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	const audio = document.getElementById('audio-element');
+	const playBtn = document.getElementById('play');
+	const stopBtn = document.getElementById('stop');
+	const nextBtn = document.getElementById('next');
+	const prevBtn = document.getElementById('prev');
+	const title = document.getElementById('title');
+	const progress = document.getElementById('progress');
+	const progressContainer = document.getElementById('progress-container');
+	const playlist = document.getElementById('playlist');
+	const playlistItems = document.querySelectorAll('#playlist li');
+
+	let currentSongIndex = 0;
+
+	// Load song
+	function loadSong(songSrc, songTitle) {
+	    title.innerText = songTitle;
+	    audio.src = songSrc;
+	}
+
+	// Play/Pause
+	function togglePlay() {
+	    if (audio.paused) {
+	        audio.play();
+	        playBtn.innerHTML = '<span style="margin-left: -3px">&#9208;</span>';
+	    } else {
+	        audio.pause();
+	        playBtn.innerHTML = '&#9654;';
+	    }
+	}
+
+	// Stop
+	function stopSong() {
+	    audio.pause();
+	    audio.currentTime = 0;
+	    playBtn.innerHTML = '<span style="margin-left: -3px">&#9208;</span>';
+	}
+
+	// Next Song
+	function nextSong() {
+	    currentSongIndex = (currentSongIndex + 1) % playlistItems.length;
+	    loadAndPlay();
+	}
+
+	// Previous Song
+	function prevSong() {
+	    currentSongIndex = (currentSongIndex - 1 + playlistItems.length) % playlistItems.length;
+	    loadAndPlay();
+	}
+
+	function loadAndPlay() {
+	    const nextSongItem = playlistItems[currentSongIndex];
+	    loadSong(nextSongItem.getAttribute('data-src'), nextSongItem.innerText);
+	    audio.play();
+	    playBtn.innerHTML = '<span style="margin-left: -3px">&#9208;</span>';
+	    updateActiveTitle();
+	}
+
+	// Update Progress Bar
+	function updateProgress(e) {
+	    const { duration, currentTime } = e.srcElement;
+	    const progressPercent = (currentTime / duration) * 100;
+	    progress.style.width = `${progressPercent}%`;
+	}
+
+	// Click to Seek
+	function setProgress(e) {
+	    const width = this.clientWidth;
+	    const clickX = e.offsetX;
+	    const duration = audio.duration;
+	    audio.currentTime = (clickX / width) * duration;
+	}
+
+	// Click Title to Play
+	playlistItems.forEach((item, index) => {
+	    item.addEventListener('click', () => {
+	        currentSongIndex = index;
+	        loadAndPlay();
+	    });
+	});
+
+	function updateActiveTitle() {
+	    playlistItems.forEach(item => item.classList.remove('active-song'));
+	    playlistItems[currentSongIndex].classList.add('active-song');
+	}
+
+	// Event Listeners
+	playBtn.addEventListener('click', togglePlay);
+	stopBtn.addEventListener('click', stopSong);
+	nextBtn.addEventListener('click', nextSong);
+	prevBtn.addEventListener('click', prevSong);
+	audio.addEventListener('timeupdate', updateProgress);
+	progressContainer.addEventListener('click', setProgress);
+	audio.addEventListener('ended', nextSong); // Auto play next
+
+	// Initial load
+	loadSong(playlistItems[0].getAttribute('data-src'), playlistItems[0].innerText);
+</script>
+</body>
+</html>
