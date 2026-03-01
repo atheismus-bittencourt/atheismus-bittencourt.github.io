@@ -60,7 +60,7 @@ font-display: swap;
 
 html, body
 {
-	background: #f2f2f2;
+	background: #000;
 	color: #000;
 	font-family: 'Constantia', Georgia, Serif;
 	font-size: 1rem;
@@ -175,7 +175,7 @@ cite { font-style: normal; }
 	margin-top: 19px;
 }
 
-.content { padding: 0px 39px 36px 39px; }
+.content { padding: 0px 39px 37px 39px; }
 
 .copyright
 {
@@ -375,14 +375,14 @@ li:not(:first-child) { margin-top: 5px; }
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	line-height: 1;
-	margin-top: 22px;
+	margin-top: 23px;
 }
 
-.navigation-bottom-arrows { font-size: 1.14rem; }
+.navigation-bottom-arrows { font-size: 1.2rem; }
 
 .navigation-bottom-button
 {
-	font-size: 1.14rem;
+	font-size: 1.2rem;
 	text-align: center;
 }
 
@@ -573,7 +573,6 @@ ul
 		paint-order: stroke fill;
 	}
 
-	.navigation-bottom { margin-top: 23px; }
 	.navigation-bottom-arrows { font-size: 1.19rem; }
 	.navigation-bottom-button { font-size: 1.2rem; }
 }
