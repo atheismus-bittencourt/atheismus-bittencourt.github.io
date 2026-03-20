@@ -2,6 +2,8 @@ Atheismus, Humanismus und Freidenkertum.
 
 Bücher “Liberated from Religion” und “Wasting Time on God”, von Paulo Bittencourt. 
 
+<a href="https://atheism-bittencourt.github.io/books" target="_blank">Bücher</a>
+
 <a href="https://atheismus-bittencourt.github.io/atheismus">Was ist Atheismus?</a>
 
 <a href="https://atheismus-bittencourt.github.io/humanismus">Was ist Humanismus?</a>
