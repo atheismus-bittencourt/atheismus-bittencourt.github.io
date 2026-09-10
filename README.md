@@ -62,3 +62,10 @@ Nur auf Englisch:
 <a href="https://bittencourt.pages.dev/best-quotes">Paulo Bittencourt’s Best Quotes</a>
 
 <a href="https://bittencourt.pages.dev/photography">Photographs by Paulo Bittencourt</a>
+
+
+Nur auf Portugiesisch:
+
+<a href="https://bittencourt-pt.pages.dev/humanista">Por Que Humanistas Rejeitam a Bíblia</a>
+
+<a href="https://bittencourt-pt.pages.dev/bolsonaro">Bolsonaro e Trump São Evidências de Que Deus Não Existe</a>
