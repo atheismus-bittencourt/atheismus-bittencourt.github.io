@@ -49,6 +49,8 @@ Nur auf Englisch:
 
 <a href="https://bittencourt.pages.dev/reflections">God, Jesus, Satan and the Whole Enchilada</a>
 
+<a href="https://bittencourt.pages.dev/cognitive-dissonance">Evangelical Church of Cognitive Dissonance</a>
+
 <a href="https://bittencourt.pages.dev/jean-meslier-testament">The Testament of Jean Meslier</a>
 
 <a href="https://bittencourt.pages.dev/religious-trauma">Healing from Religious Trauma Syndrome</a>
