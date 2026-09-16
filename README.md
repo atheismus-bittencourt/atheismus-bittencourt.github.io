@@ -27,7 +27,9 @@ Nur auf Englisch:
 
 <a href="https://bittencourt.pages.dev/bible">Is the Bible really the Word of God?</a>
 
-<a href="https://bittencourt.pages.dev/creationism">Did God create the Universe?</a>
+<a href="https://bittencourt.pages.dev/scripture">The Word of Flawed</a>
+
+<a href="https://bittencourt.pages.dev/creationism">Did God Create the Universe?</a>
 
 <a href="https://bittencourt.pages.dev/jesus">Christianity is a Cult</a>
 
