@@ -1,39 +1,79 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://bittencourt-de.pages.dev/</loc>
-</url>
-<url>
-  <loc>https://bittencourt-de.pages.dev/freidenkertum</loc>
-</url>
-<url>
-  <loc>https://bittencourt-de.pages.dev/humanismus</loc>
-</url>
-<url>
-  <loc>https://bittencourt-de.pages.dev/atheismus</loc>
-</url>
-<url>
-  <loc>https://bittencourt-de.pages.dev/zitate</loc>
-</url>
-<url>
-  <loc>https://bittencourt-de.pages.dev/paulo-biografie</loc>
-</url>
-<url>
-  <loc>https://bittencourt-de.pages.dev/familienname</loc>
-</url>
-<url>
-  <loc>https://bittencourt-de.pages.dev/bossa-nova-musik</loc>
-</url>
-<url>
-  <loc>https://bittencourt-de.pages.dev/kontakt</loc>
-</url>
-
-
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!--
+Created with IncludeHelp XML Sitemap Generator
+https://www.includehelp.com/tools/xml-sitemap-generator.aspx
+ -->
+  <url>
+    <loc>https://bittencourt-de.pages.dev/atheismus</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/bossa-nova-musik</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/familienname</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/freidenkertum</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/humanismus</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/index</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/kontakt</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/paulo-biografie</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/README.md</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/sitemap.xml</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/zitate</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/media/agustin-de-betancourt-paulo-bittencourt.jpg</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/media/container-background.jpg</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/media/freidenkertum-humanismus-atheismus-paulo-bittencourt.svg</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/media/paulo-bitencourt-zitat-es-gibt-kein-groeseres-vergnuegen-als-ein-freidenker-zu-sein.jpg</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/media/paulo-bitencourt-zitat-ich-will-nicht-glauben-ich-will-wissen.jpg</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/media/paulo-bittencourt-bossa-nova-musik.jpg</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/media/paulo-bittencourt-freidenkertum-humanismus-atheismus.gif</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/media/paulo-bittencourt-website.jpg</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/media/paulo-bittencourt.svg</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/media/speaker-grid.png</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/media/speaker.png</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/media/two-speakers.png</loc>
+  </url>
+  <url>
+    <loc>https://bittencourt-de.pages.dev/media/wappen-der-familien-bittencourt-und-bettencourt.jpg</loc>
+  </url>
 </urlset>
